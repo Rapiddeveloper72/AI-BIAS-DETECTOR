@@ -25,7 +25,7 @@ if query:
     st.write(f"🔍 Fetching articles for: **{query}** ...")
 
     # Fetch 3 articles
-    articles = newsapi.get_everything(q=query, language="en", page_size=10)
+    articles = newsapi.get_everything(q=query, language="en", page_size=4)
 
     if not articles['articles']:
         st.error("No articles found. Try another topic.")
@@ -64,6 +64,7 @@ if query:
             combined_text = " ".join(summaries)
             neutral = summarizer(combined_text, max_length=200, min_length=30, do_sample=False)
             st.success(neutral[0]['summary_text'])
+
 
 
 
