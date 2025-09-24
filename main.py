@@ -14,7 +14,7 @@ st.write("Detect media bias, compare perspectives, and get a neutral summary.")
 newsapi = NewsApiClient(api_key="9177913580464e7ca095885272b9d435")
 
 sentiment_analyzer = pipeline("sentiment-analysis")
-summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+summarizer = pipeline("summarization", model="sshleifer/distilbart-cnn-12-6")
 
 # -------------------------
 # User Input
@@ -64,3 +64,4 @@ if query:
             combined_text = " ".join(summaries)
             neutral = summarizer(combined_text, max_length=200, min_length=30, do_sample=False)
             st.success(neutral[0]['summary_text'])
+
