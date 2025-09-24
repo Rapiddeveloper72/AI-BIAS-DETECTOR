@@ -51,7 +51,7 @@ if query:
 
                 # Summarize
                 try:
-                    summary = summarizer(content, max_length=200, min_length=15, do_sample=False)
+                    summary = summarizer(content, max_length=50, min_length=15, do_sample=False)
                     st.write("**Mini-Summary:**", summary[0]['summary_text'])
                     summaries.append(summary[0]['summary_text'])
                 except:
@@ -62,8 +62,9 @@ if query:
             st.markdown("---")
             st.subheader("🟢 Neutral Summary (AI-generated):")
             combined_text = " ".join(summaries)
-            neutral = summarizer(combined_text, max_length=200, min_length=30, do_sample=False)
+            neutral = summarizer(combined_text, max_length=60, min_length=30, do_sample=False)
             st.success(neutral[0]['summary_text'])
+
 
 
 
